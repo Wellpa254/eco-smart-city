@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Recycle, Calendar, AlertTriangle, BookOpen, User, BarChart3 } from "lucide-react";
+import { Menu, X, Recycle, Calendar, AlertTriangle, BookOpen, User, BarChart3, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -11,6 +11,7 @@ const Navigation = () => {
   const navItems = [
     { name: "Dashboard", href: "/dashboard", icon: BarChart3 },
     { name: "Schedule Pickup", href: "/schedule", icon: Calendar },
+    { name: "Payments", href: "/payments", icon: DollarSign },
     { name: "Report Issue", href: "/report", icon: AlertTriangle },
     { name: "Waste Guide", href: "/guide", icon: Recycle },
     { name: "Learn", href: "/learn", icon: BookOpen },
