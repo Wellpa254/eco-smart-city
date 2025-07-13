@@ -50,8 +50,8 @@ const Navigation = () => {
                 <span>{item.name}</span>
               </Link>
             ))}
-            <Button variant="eco" className="ml-4">
-              Get Started
+            <Button asChild variant="eco" className="ml-4">
+              <Link to="/signup">Sign Up</Link>
             </Button>
           </div>
 
@@ -88,8 +88,8 @@ const Navigation = () => {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button variant="eco" className="w-full">
-                  Get Started
+                <Button asChild variant="eco" className="w-full">
+                  <Link to="/signup">Sign Up</Link>
                 </Button>
               </div>
             </div>
