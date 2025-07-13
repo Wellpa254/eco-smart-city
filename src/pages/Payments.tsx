@@ -47,7 +47,12 @@ const Payments = () => {
     const saved = localStorage.getItem('cleanCityPayments');
     if (saved) {
       const savedRecords = JSON.parse(saved);
-      setPaymentRecords(savedRecords);
+      // Convert dueDate strings back to Date objects
+      const recordsWithDates = savedRecords.map((record: any) => ({
+        ...record,
+        dueDate: new Date(record.dueDate)
+      }));
+      setPaymentRecords(recordsWithDates);
     } else {
       setPaymentRecords(records);
       localStorage.setItem('cleanCityPayments', JSON.stringify(records));
