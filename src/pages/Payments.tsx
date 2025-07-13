@@ -23,7 +23,7 @@ const Payments = () => {
   const [totalArrears, setTotalArrears] = useState<number>(0);
   const { toast } = useToast();
 
-  const monthlyFee = 50; // Example monthly fee
+  const monthlyFee = 250; // Monthly fee in Kenyan Shillings (KES)
 
   // Initialize payment records for the last 12 months
   useEffect(() => {
@@ -96,7 +96,7 @@ const Payments = () => {
     
     toast({
       title: updatedRecords[index].paid ? "Payment Marked as Paid" : "Payment Marked as Unpaid",
-      description: `${updatedRecords[index].month} ${updatedRecords[index].year} - $${updatedRecords[index].amount}`,
+      description: `${updatedRecords[index].month} ${updatedRecords[index].year} - KES ${updatedRecords[index].amount}`,
     });
   };
 
@@ -152,7 +152,7 @@ const Payments = () => {
                       }}
                     />
                     <label htmlFor="current-payment" className="text-sm font-medium">
-                      Payment Made (${currentRecord.amount})
+                      Payment Made (KES {currentRecord.amount})
                     </label>
                   </div>
                 )}
@@ -172,7 +172,7 @@ const Payments = () => {
             <CardContent>
               <div className="text-center">
                 <div className={`text-3xl font-bold mb-2 ${totalArrears > 0 ? "text-destructive" : "text-green-600"}`}>
-                  ${totalArrears}
+                  KES {totalArrears.toLocaleString()}
                 </div>
                 <Badge variant={totalArrears > 0 ? "destructive" : "default"} className="text-xs">
                   {totalArrears > 0 ? `${paymentRecords.filter(r => !r.paid && new Date(r.dueDate) < new Date()).length} overdue payments` : "All payments up to date"}
@@ -193,7 +193,7 @@ const Payments = () => {
             <CardContent>
               <div className="text-center">
                 <div className="text-3xl font-bold text-foreground mb-2">
-                  ${monthlyFee}
+                  KES {monthlyFee}
                 </div>
                 <div className="text-sm text-muted-foreground">
                   Waste management service
@@ -240,7 +240,7 @@ const Payments = () => {
                     
                     <div className="flex items-center gap-4">
                       <div className="text-right">
-                        <div className="font-medium">${record.amount}</div>
+                        <div className="font-medium">KES {record.amount}</div>
                         <Badge 
                           variant={record.paid ? "default" : isOverdue ? "destructive" : "secondary"}
                           className="text-xs"
